@@ -1,8 +1,8 @@
 #include <stdio.h>
-/*
- * main - entry point
- * descrition: 'print numbers of base 16'
- * return: always 0
+/**
+ * main - Entry point
+ * Descrition: 'print numbers of base 16'
+ * Return: always 0
  */
 int main(void)
 {
