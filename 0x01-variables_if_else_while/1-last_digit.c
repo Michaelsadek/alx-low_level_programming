@@ -1,11 +1,13 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
-//main - Entry point
-//Description: 'get the last degiti of a number'
-//Return: always 0
-// more headers goes there 
-// betty style doc for function main goes there
+/**
+ *main - Entry point
+ *Description: 'get the last degiti of a number'
+ *Return: always 0
+ * more headers goes there
+ * betty style doc for function main goes there
+ */
 int main(void)
 {
 	int n;
