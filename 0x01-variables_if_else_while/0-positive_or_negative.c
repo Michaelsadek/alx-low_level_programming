@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <time.h>
+#include <stdib.h>
 /*more headers goes there*/
 /*betty style foc for function main goes there*/
 
