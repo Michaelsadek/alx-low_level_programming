@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <time.h>
-//more headers goes there
-//betty style foc for function main goes there
+/*more headers goes there*/
+/*betty style foc for function main goes there*/
+
 int main (void)
 {
 	int x;
