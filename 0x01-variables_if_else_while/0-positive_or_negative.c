@@ -1,4 +1,4 @@
-#include <stdib.h>
+#include <stdio.h>
 #include <time.h>
 //more headers goes there
 //betty style foc for function main goes there
