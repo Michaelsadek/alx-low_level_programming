@@ -1,9 +1,11 @@
-#include <stdib.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
 
-/*more headers goes there*/
-/*betty style foc for function main goes there*/
+/*
+ * main - enter point
+ * return:always 0
+ * */
 
 int main(void)
 {
