@@ -1,11 +1,11 @@
 #include <stdlib.h>
 #include <time.h>
-#include<stdio.h>
-/**
- * main - Entry point
- * description:'get the last degiti of a number'
- * return:always 0
-  */
+#include <stdio.h>
+//main - Entry point
+//Description: 'get the last degiti of a number'
+//Return: always 0
+// more headers goes there 
+// betty style doc for function main goes there
 int main(void)
 {
 	int n;
@@ -16,15 +16,15 @@ int main(void)
 	ld = n % 10;
 	if (ld > 5)
 	{
-		printf("last digit of %d is %d and is greater than 5", n, ld);
+		printf("last digit of %d is %d and is greater than 5", n, ls);
 	}
 	else if (ld == 0)
 	{
-		printf("last digit of %d is %d and is 0", 0, ld);
+		printf("last digit of %d is %d and is 0", n, ld);
 	}
 	else
 	{
 		printf("last digit of %d is %d and less than 6 and not 0", n, ld);
 	}
-return (0);
+	return (0);
 }
