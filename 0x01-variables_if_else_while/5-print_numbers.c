@@ -1,8 +1,8 @@
 #include <stdio.h>
 /*
- * main - entry point
- * description: 'print number of base 10'
- * return: always 0
+ * main - Entry point
+ * Description: 'print number of base 10'
+ * Return: always 0
  */
 int main(void)
 {
