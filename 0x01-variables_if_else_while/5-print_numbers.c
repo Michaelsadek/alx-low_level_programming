@@ -1,5 +1,5 @@
 #include <stdio.h>
-/*
+/**
  * main - Entry point
  * Description: 'print number of base 10'
  * Return: Always 0
