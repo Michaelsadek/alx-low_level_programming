@@ -1,8 +1,8 @@
 #include <stdio.h>
-/*
- * main - entry point
- * description: 'print comb of number'
- * return: always 0
+/**
+ * main - Entry point
+ * Description: 'print comb of number'
+ * Return: always 0
  */
 int main(void)
 {
