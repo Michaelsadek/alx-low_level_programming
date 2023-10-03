@@ -13,7 +13,7 @@ void print_magic(Elf64_Ehdr h)
 
 	printf(" magic:  ");
 	for (i = 0; i < EI_NIDENT; i++)
-		printf("%2.2x%s", h.e_ident[i], i ==EI_NIDENT - 1 ? "\n" : " ");
+		printf("%2.2x%s", h.e_ident[i], i == EI_NIDENT - 1 ? "\n" : " ");
 }
 /**
  * print_class - print ELF class
@@ -27,8 +27,8 @@ void print_class(Elf64_Ehdr h)
 		case ELFCLASS64:
 			printf("ELF64");
 			break;
-			case ELFCLASS32
-				printf("ELF32");
+		case ELFCLASS32:
+			printf("ELF32");
 			break;
 		case ELFCLASSNONE:
 			printf("none");
@@ -63,7 +63,7 @@ void print_data(Elf64_Ehdr h)
  */
 void print_version(Elf64_Ehdr h)
 {
-	printf("  version:               %d", h.eident[EI_VERION]);
+	printf("  version:               %d", h.e_ident[EI_VERSION]);
 	switch (h.e_ident[EI_VERSION])
 	{
 		case EV_CURRENT:
@@ -88,7 +88,7 @@ void print_osabi(Elf64_Ehdr h)
 		case ELFOSABI_NONE:
 			printf("UNIX - System V");
 			break;
-		case ELFOSBI_HPUX:
+		case ELFOSABI_HPUX:
 			printf("UNIX - HP-UX");
 			break;
 		case ELFOSABI_NETBSD:
@@ -138,8 +138,7 @@ void print_osabi_more(Elf64_Ehdr h)
 			case ELFOSABI_ARM:
 			printf("ARM");
 			break;
-defult:
-			printf("<unknown: %x>", h.eident[EL_OSABI]);
+			printf("<unknown: %x>", h.e_ident[EI_OSABI]);
 			break;
 	}
 }
@@ -162,30 +161,30 @@ void print_type(Elf64_Ehdr h)
 	int i = 0;
 
 	printf("   Type:                ");
-        if (h.e_ident[EI_DATA] == ELFDATA2MSB)
-                i = 1;
-        switch (p[i])
-        {
-                case ET_NONE:
-                        printf("NONE (None)");
-                        break;
-                case ET_REL:
-                        printf("REL (Relocatable file)");
-                        break;
-                case ET_EXEC:
-                        printf("EXEC (Execulable file)");
-                        break;
-                case ET_DYN:
-                        printf("DYN (Shared object file)");
-                        break;
-                case ET_CORE:
-                        printf("CORE (Core file)");
-                        break;
-                default:
-                        printf("<inknown>: %x", p[i]);
-                        break;
-        }
-        printf("\n");
+	if (h.e_ident[EI_DATA] == ELFDATA2MSB)
+		i = 1;
+	switch (p[i])
+	{
+		case ET_NONE:
+			printf("NONE (None)");
+			break;
+		case ET_REL:
+			printf("REL (Relocatable file)");
+			break;
+		case ET_EXEC:
+			printf("EXEC (Execulable file)");
+			break;
+		case ET_DYN:
+			printf("DYN (Shared object file)");
+			break;
+		case ET_CORE:
+			printf("CORE (Core file)");
+			break;
+		default:
+			printf("<inknown>: %x", p[i]);
+				break;
+	}
+	printf("\n");
 }
 /**
  * print_entry - prints the ELF entry point address
@@ -193,11 +192,11 @@ void print_type(Elf64_Ehdr h)
  */
 void print_entry(Elf64_Ehdr h)
 {
-        int i = 0, len = 0;
-        unsigned char *p = (unsigned char *)&h.e_entry;
+	int i = 0, len = 0;
+	unsigned char *p = (unsigned char *)&h.e_entry;
 
-        printf("  Entry point address:         0x");
-        if (h.e_ident[EI_DATA] != ELFDATA2MSB)
+	printf("  Entry point address:         0x");
+	if (h.e_ident[EI_DATA] != ELFDATA2MSB)
 	{
 		i = h.e_ident[EI_CLASS] == ELFCLASS64 ? 7 : 3;
 		while (!p[i])
@@ -237,27 +236,27 @@ int main(int ac, char **av)
 		dprintf(STDERR_FILENO, "Usage: elf_header elf_filename\n"), exit(98);
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
-		dprintf(STDERR_FILENO, "can't open file: %s\n", av[1],exit(98);
+		dprintf(STDERR_FILENO, "can't open file: %s\n", av[1]), exit(98);
 	b = read(fd, &h, sizeof(h));
 	if (b < 1 || b != sizeof(h))
-		dprintf(STDERR_FILENO, "can't read from file: %s\n", av[1], exit(98);
-	if (h.e_ident[0] == 0x7f && h.e_ident[1] == 'E' && h.e_ident[2] == 'L' 	&&
+		dprintf(STDERR_FILENO, "can't read from file: %s\n", av[1]), exit(98);
+	if (h.e_ident[0] == 0x7f && h.e_ident[1] == 'E' && h.e_ident[2] == 'L' &&
 		h.e_ident[3] == 'F')
 	{
 	printf("ELF Header:\n");
 	}
 	else
-	dprintf(STDERR_FILENO, "Not ELF file: %s\n", av[1], exit(98);
+	dprintf(STDERR_FILENO, "Not ELF file: %s\n", av[1]), exit(98);
 
 	print_magic(h);
 	print_class(h);
 	print_data(h);
-	print_version(h); 
+	print_version(h);
 	print_osabi(h);
 	print_abiversion(h);
 	print_type(h);
 	print_entry(h);
 	if (close(fd))
-	dprintf(STDERR_FILNO, "Error closing file descriptor: %d\n", fd), exit(98);
+	dprintf(STDERR_FILENO, "Error closing file descriptor: %d\n", fd), exit(98);
 	return (EXIT_SUCCESS);
 }
