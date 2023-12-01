@@ -36,6 +36,7 @@ void print_class(Elf64_Ehdr h)
 	}
 	printf("\n");
 }
+
 /**
  * print_date - prints ELF data
  * @h: the ELF header struct
