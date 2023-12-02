@@ -58,6 +58,7 @@ shash_node_t *make_shash_node(const char *key, const char *value)
 		return (NULL);
 	}
 	shn->next = shn->snext = shn->sprev = NULL;
+
 	return (shn);
 }
 
@@ -233,13 +234,13 @@ void shash_table_delete(shash_table_t *ht)
 	for (i = 0; i < ht->size; i++)
 	{
 		while (ht->array[i] != NULL)
-		{
+                {
+                        free(ht->array[i]->key);
+                        free(ht->array[i]->value);
+                        free(ht->array[i]);
 			next = ht->array[i]->next;
-			free(ht->array[i]->key);
-			free(ht->array[i]->value);
-			free(ht->array[i]);
 			ht->array[i] = next;
-		}
+                }
 	}
 	free(ht->array);
 	ht->array = NULL;
